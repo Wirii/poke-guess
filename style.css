@@ -1,0 +1,260 @@
+* {
+  font-family: 'Arimo', sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 90%;
+  background-color: #b1e0f9;
+  border-radius: 20px;
+  height: 100vh;
+  padding: 40px 20px;
+}
+
+.main header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.main header img {
+  margin: 5px;
+  width: 350px;
+}
+
+.main header h2 {
+  font-size: 30px;
+  font-family: 'Arimo', sans-serif;
+  font-weight: 900;
+  color: #ffcd00; /* pokemon yellow */
+  -webkit-text-stroke-width: 1.5px;
+  -webkit-text-stroke-color: #356abc; /* pokemon blue */
+}
+
+.main .replay {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.main .replay p {
+  font-size: 30px;
+  text-align: center;
+  background-color: #356abc;
+  padding: 10px;
+  border-radius: 10px;
+  color: #ffcd00;
+  font-weight: 700;
+}
+
+.main .replay button {
+  font-size: 20px;
+  background-color: #ffcd00;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  color: #356abc;
+  font-weight: 700;
+}
+
+.main .replay button:hover {
+  background-color: #356abc;
+  transform: scale(1.1);
+  transition: all .3s ease-in-out;
+  cursor: pointer;
+  color: #ffcd00;
+}
+
+.main .start {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.main .start h5 {
+  font-size: 25px;
+  font-family: 'Arimo', sans-serif;
+  font-weight: 900;
+  color: #356abc;
+}
+
+.main .start p {
+  font-size: 20px;
+  font-family: 'Arimo', sans-serif;
+  font-weight: 900;
+  color: #467fff;
+}
+
+.main .start button {
+  font-size: 30px;
+  background-color: #ffcd00;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 50px 10px 0 10px;
+  color: #356abc;
+  font-weight: 700;
+}
+
+.main .start button:hover {
+  background-color: #356abc;
+  transform: scale(1.1);
+  transition: all .3s ease-in-out;
+  cursor: pointer;
+  color: #ffcd00;
+}
+
+.main .game {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  width: 100%;
+}
+
+.main .game .visuals {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 35%;
+  margin: 0 10px;
+}
+
+.main .game .visuals .pkmn-img img{
+  width: 200px;
+  text-align: center;
+  margin: 20px;
+}
+
+.main .game .visuals .pkmn-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.main .game .visuals .pkmn-info p {
+  font-size: 23px;
+  font-weight: 700;
+}
+
+.main .game .visuals .pkmn-info span.type1, span.type2 {
+  text-transform: capitalize;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.main .game .guess {
+  display: flex;
+/*   flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+  width: 65%;
+  padding: 10px;
+  margin: 0 10px;
+}
+
+.main .game .guess .pkmn-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+  width: 50%;
+}
+
+.main .game .guess .pkmn-name .typing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+.main .game .guess .pkmn-name .typing h3 {
+  font-size: 40px;
+}
+
+.main .game .guess .pkmn-name .typing .buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main .game .guess .pkmn-name .typing .buttons button {
+  font-size: 20px;
+  background-color: #ffcd00;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 10px 0 10px;
+  color: #356abc;
+  font-weight: 700;
+}
+
+.main .game .guess .pkmn-name .typing .buttons button:hover {
+  background-color: #356abc;
+  transform: scale(1.1);
+  transition: all .3s ease-in-out;
+  cursor: pointer;
+  color: #ffcd00;
+}
+
+.main .game .guess .letters {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 45%;
+}
+
+.main .game .guess .letters .miss {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  margin: 15px;
+}
+
+.main .game .guess .letters .miss h5 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.main .game .guess .letters .miss p {
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #356abc;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 100px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
