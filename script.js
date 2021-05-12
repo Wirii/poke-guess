@@ -53,7 +53,7 @@ const initGame = async () => {
 // get random pokemon id
 const randomPokemon = () => {
   let pokeId =  Math.floor((Math.random() * 898) + 1);
-  console.log(pokeId);
+  // console.log(pokeId);
   return pokeId;
 }
 
@@ -93,7 +93,7 @@ const parseLetter = (letter) => {
     hiddenName.innerHTML = `${toGuess.toUpperCase()}`;
   } 
 
-  console.log(toGuess + ", " + pokeName);
+  // console.log(toGuess + ", " + pokeName);
 
   // check if guessed
   if (toGuess.replaceAll(" ", "") === pokeName) {      
@@ -193,7 +193,7 @@ const fetchData = async () => {
   displayPokemon(pokemon);
   
   pokeName = pokemon.species.name;
-  console.log(pokeName);
+  // console.log(pokeName);
   for (let i = 0; i < pokeName.length; i++) {
     if(pokeName[i] == "-") {
       toGuess = toGuess + "- ";
