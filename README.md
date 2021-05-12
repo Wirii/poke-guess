@@ -8,3 +8,7 @@ It's a simple game, where given a silhouette and a type, a player has to guess t
 ### Things used.
 
 JS, HTML, CSS - the usual. Pokemon data come from PokeApi.
+
+### Where to play?
+
+https://poke-guess.netlify.app/
