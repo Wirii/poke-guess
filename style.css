@@ -7,18 +7,16 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #b1e0f9;
 }
 
 .main {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
   width: 90%;
-  background-color: #b1e0f9;
-  border-radius: 20px;
-  height: 100vh;
-  padding: 40px 20px;
+  padding: 20px 20px 40px 20px;
 }
 
 .main header {
@@ -33,7 +31,8 @@ body {
   width: 350px;
 }
 
-.main header h2 {
+.main header .subhead {
+  display: inline;
   font-size: 30px;
   font-family: 'Arimo', sans-serif;
   font-weight: 900;
@@ -120,7 +119,7 @@ body {
 
 .main .game {
   display: none;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   margin: 10px;
   width: 100%;
@@ -132,12 +131,12 @@ body {
   justify-content: center;
   align-items: center;
   padding: 10px;
-  width: 35%;
+/*   width: 35%; */
   margin: 0 10px;
 }
 
 .main .game .visuals .pkmn-img img{
-  width: 200px;
+  width: 170px;
   text-align: center;
   margin: 20px;
 }
@@ -166,7 +165,7 @@ body {
 /*   flex-direction: column; */
   justify-content: center;
   align-items: center;
-  width: 65%;
+/*   width: 65%; */
   padding: 10px;
   margin: 0 10px;
 }
@@ -177,7 +176,7 @@ body {
   align-items: center;
   flex-direction: column;
   margin-bottom: 20px;
-  width: 50%;
+/*   width: 50%; */
 }
 
 .main .game .guess .pkmn-name .typing {
@@ -216,29 +215,32 @@ body {
   color: #ffcd00;
 }
 
-.main .game .guess .letters {
-  display: flex;
+.main .keyboard {
+  display: none;
   justify-content: center;
-  align-items: flex-start;
-  width: 45%;
-}
-
-.main .game .guess .letters .miss {
-  display: flex;
-  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  margin: 15px;
 }
 
-.main .game .guess .letters .miss h5 {
-  font-size: 20px;
-  font-weight: 700;
-}
-
-.main .game .guess .letters .miss p {
+.main .keyboard .letter-btn {
   font-size: 30px;
-  font-weight: 400;
+  margin: 10px;
+  padding: 5px 10px;
+  color: #ffcd00;
+  background-color: #356abc;
+  border: none;
+}
+
+.main .keyboard .letter-btn:hover {
+  transform: scale(1.1);
+  filter: brightness(1.5);
+  cursor: pointer;
+}
+
+.main .keyboard .letter-btn:disabled {
+  transform: scale(1);
+  filter: brightness(0.5);
+  cursor: default;
 }
 
 .loader {
@@ -257,4 +259,107 @@ body {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+@media screen and (max-width: 800px) {
+  .main .replay p {
+    font-size: 20px;
+  }
+  
+  .main .keyboard .letter-btn {
+    font-size: 25px;
+  }
+  
+  .main .game .visuals .pkmn-info {
+    margin: 10px;
+  }
+  
+  .main .game .visuals .pkmn-info p {
+    font-size: 20px;
+  }
+  
+  .main .game .guess .pkmn-name .typing h3 {
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .main {
+    width: 100%;
+    padding: 0;
+  }
+  
+  .main .keyboard .letter-btn {
+    font-size: 20px;
+  }
+  
+  .main .game .visuals, .main .game .guess {
+    padding: 0;
+  }
+  
+  .main .game .visuals .pkmn-info p {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .main .keyboard .letter-btn {
+    margin: 5px;
+  }
+  
+  .main .game .visuals .pkmn-img img {
+    width: 120px;
+    margin: 10px;
+  }
+  
+  .main .start h5 {
+    font-size: 20px;  
+    text-align: center;
+  }
+  
+  .main .start p {
+    font-size: 18px;
+    text-align: center;
+  }
+  
+  .main .start button {
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .main .game .visuals .pkmn-info p {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  
+  .main .game .visuals .pkmn-info span.type1, span.type2 {
+    text-align: center;
+    margin: 2px;
+  }
+}
+
+@media screen and (max-width: 455px) {
+  body {
+    margin: 0;
+  }
+  
+  .main .game {
+    flex-direction: column;
+  }
+  
+  .main .game .visuals .pkmn-info p {
+    display: inline;
+  }
+  
+  .main .keyboard .letter-btn {
+    font-size: 16px;
+  }
+  
+  .main .keyboard .qtop, .main .keyboard .atol, .main .keyboard .ztom {
+    text-align: center;
+  }
+  
 }

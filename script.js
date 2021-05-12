@@ -19,7 +19,6 @@ const colors = {
   ice: '#98d8d8'
 };
 
-let lettersArr = [];
 let guessArr = [];
 let pokeName = "";
 let toGuess = "";
@@ -35,13 +34,15 @@ const giveUpBtn = document.querySelector(".give-up");
 const replayBtn = document.querySelector(".again");
 const startBtn = document.querySelector(".start-btn");
 const hiddenName = document.querySelector(".pkmn-guess");
-const usedLetters = document.querySelector(".used");
+const letterBtn = document.querySelector(".letter-btn");
+const gameLogo = document.querySelector(".game-logo");
 
 
 // inits game
 const initGame = async () => {
   startDiv.style.display = "none";
   document.querySelector(".loader").style.display = "flex";
+  lettersButtons();
   await fetchData();
   pokeArt.onload = () => {
     gameDiv.style.display = "flex";
@@ -73,8 +74,33 @@ const displayPokemon = (pokemon) => {
   pokeArt.style.filter = "brightness(0)";
   
   pokeArt.onload = () => {
+    document.querySelector(".subhead").style.display = "none";
     document.querySelector(".game").style.display = "flex";
     document.querySelector(".loader").style.display = "none";
+    document.querySelector(".keyboard").style.display = "flex";
+    gameLogo.style.width = "200px";
+  }
+}
+
+const parseLetter = (letter) => {
+  if (pokeName.indexOf(letter) != -1) {
+    for (let j = 0; j < guessArr.length; j++) {
+      if(pokeName[j] === letter) {
+        guessArr[j] = letter;
+      }
+    }
+    toGuess = guessArr.join(" ");
+    hiddenName.innerHTML = `${toGuess.toUpperCase()}`;
+  } 
+
+  console.log(toGuess + ", " + pokeName);
+
+  // check if guessed
+  if (toGuess.replaceAll(" ", "") === pokeName) {      
+    message.innerHTML = "Congrats! You guessed it right!";
+    messageContainer.style.display = "flex";
+    pokeArt.style.filter = "brightness(1)";
+    hiddenName.style.color = "green";
   }
 }
 
@@ -97,23 +123,45 @@ const replay = () => {
     event.preventDefault();
     messageContainer.style.display = "none";
     document.querySelector(".game").style.display = "none";
+    document.querySelector(".keyboard").style.display = "none";
     document.querySelector(".loader").style.display = "flex";
     resetGame();
     fetchData();
   }
 }
+
+const makeButton = (letter) => {
+  let button = `<button class="letter-btn" id='` + letter + `' onClick="letterChecker('` + letter + `')">` + letter.toUpperCase() + `</button>`;
+  return button;
+}
+
+const lettersButtons = () => {
+  let letters1 = 'qwertyuiop'.split('').map(letter => makeButton(letter)).join("");
+  document.querySelector(".qtop").innerHTML = letters1;
+  
+  let letters2 = 'asdfghjkl'.split('').map(letter => makeButton(letter)).join("");
+  document.querySelector(".atol").innerHTML = letters2;
+  
+  let letters3 = 'zxcvbnm'.split('').map(letter => makeButton(letter)).join("");
+  document.querySelector(".ztom").innerHTML = letters3;
+}
+
+const letterChecker = (letter) => {
+  let clicked = document.querySelector('#' + letter);
+  clicked.disabled = true;
+  parseLetter(letter);
+}
  
 // resets game data
 const resetGame = () => {
-  lettersArr = [];
   guessArr = [];
   pokeName = "";
   toGuess = "";
+  lettersButtons();
   pkmnType1.innerHTML = "";
   pkmnType2.innerHTML = "";
   pkmnType1.style.background = "transparent";
   pkmnType2.style.background = "transparent";
-  usedLetters.innerHTML = "";
   pokeArt.src = "";
   pokeArt.style.filter = "brightness(1)";
   hiddenName.style.color = "black";
@@ -132,32 +180,7 @@ const letterListener = (e) => {
     let letter = e.key;
 
     // change "_" to letter if correct
-    if (pokeName.indexOf(letter) != -1) {
-      for (let j = 0; j < guessArr.length; j++) {
-        if(pokeName[j] === letter) {
-          guessArr[j] = letter;
-        }
-      }
-      toGuess = guessArr.join(" ");
-      hiddenName.innerHTML = `${toGuess.toUpperCase()}`;
-    } else {
-      // push letter to wrong letters if not there already
-      if (!lettersArr.includes(letter)) {
-        lettersArr.push(letter);        
-      }       
-      usedLetters.innerHTML = `${lettersArr.join(" ").toUpperCase()}`;
-      usedLetters.style.color = "red";
-    }
-
-    console.log(toGuess + ", " + pokeName);
-
-    // check if guessed
-    if (toGuess.replaceAll(" ", "") === pokeName) {      
-      message.innerHTML = "Congrats! You guessed it right!";
-      messageContainer.style.display = "flex";
-      pokeArt.style.filter = "brightness(1)";
-      hiddenName.style.color = "green";
-    }
+    letterChecker(letter);
   }
 }
 
@@ -183,6 +206,7 @@ const fetchData = async () => {
   hiddenName.innerHTML = `${toGuess}`;
   
   window.addEventListener("keydown", letterListener);
+  letterBtn.addEventListener("click", letterChecker);
 };
 
 welcomeScreen();
