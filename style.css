@@ -197,6 +197,7 @@ body {
   align-items: center;
 }
 .main .game .guess .pkmn-name .typing .buttons button {
+  display: inline;
   font-size: 20px;
   background-color: #ffcd00;
   border: none;

@@ -13,10 +13,10 @@ const colors = {
 	flying: '#a890f0',
 	fighting: '#c03028',
 	normal: '#a8a878',
-  ghost: '#705897',
-  dark: '#705848',
-  steel: '#b8b8d0',
-  ice: '#98d8d8'
+	ghost: '#705897',
+	dark: '#705848',
+	steel: '#b8b8d0',
+	ice: '#98d8d8'
 };
 
 let guessArr = [];
@@ -101,6 +101,7 @@ const parseLetter = (letter) => {
     messageContainer.style.display = "flex";
     pokeArt.style.filter = "brightness(1)";
     hiddenName.style.color = "green";
+    giveUpBtn.style.display = "none";
   }
 }
 
@@ -165,6 +166,7 @@ const resetGame = () => {
   pokeArt.src = "";
   pokeArt.style.filter = "brightness(1)";
   hiddenName.style.color = "black";
+  giveUpBtn.style.display = "inline";
 }
 
 const welcomeScreen = () => {
